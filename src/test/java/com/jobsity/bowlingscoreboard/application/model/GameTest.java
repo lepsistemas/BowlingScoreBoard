@@ -192,5 +192,85 @@ public class GameTest {
 		assertThat((game.getFrames().get(9)).getRolls().size()).isEqualTo(2);
 		assertThat(game.getTotalScore()).isEqualTo(81);
 	}
+	
+	@Test
+	public void shouldCreateGameWithStrikeAtLastFrame() {
+		Game game = new Game("Player");
+		
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(10));
+		game.roll(new Roll(9));
+		game.roll(new Roll(0));
+		
+		assertThat(game.getPlayer()).isEqualTo("Player");
+		assertThat((game.getFrames().get(0)).getRolls().size()).isEqualTo(2);
+		assertThat((game.getFrames().get(1)).getRolls().size()).isEqualTo(2);
+		assertThat((game.getFrames().get(2)).getRolls().size()).isEqualTo(2);
+		assertThat((game.getFrames().get(3)).getRolls().size()).isEqualTo(2);
+		assertThat((game.getFrames().get(4)).getRolls().size()).isEqualTo(2);
+		assertThat((game.getFrames().get(5)).getRolls().size()).isEqualTo(2);
+		assertThat((game.getFrames().get(6)).getRolls().size()).isEqualTo(2);
+		assertThat((game.getFrames().get(7)).getRolls().size()).isEqualTo(2);
+		assertThat((game.getFrames().get(8)).getRolls().size()).isEqualTo(2);
+		assertThat((game.getFrames().get(9)).getRolls().size()).isEqualTo(3);
+		assertThat(game.getTotalScore()).isEqualTo(37);
+	}
+	
+	@Test
+	public void shouldCreateGameWithSpareAtLastFrame() {
+		Game game = new Game("Player");
+		
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(1));
+		game.roll(new Roll(2));
+		game.roll(new Roll(8));
+		game.roll(new Roll(5));
+		
+		assertThat(game.getPlayer()).isEqualTo("Player");
+		assertThat((game.getFrames().get(0)).getRolls().size()).isEqualTo(2);
+		assertThat((game.getFrames().get(1)).getRolls().size()).isEqualTo(2);
+		assertThat((game.getFrames().get(2)).getRolls().size()).isEqualTo(2);
+		assertThat((game.getFrames().get(3)).getRolls().size()).isEqualTo(2);
+		assertThat((game.getFrames().get(4)).getRolls().size()).isEqualTo(2);
+		assertThat((game.getFrames().get(5)).getRolls().size()).isEqualTo(2);
+		assertThat((game.getFrames().get(6)).getRolls().size()).isEqualTo(2);
+		assertThat((game.getFrames().get(7)).getRolls().size()).isEqualTo(2);
+		assertThat((game.getFrames().get(8)).getRolls().size()).isEqualTo(2);
+		assertThat((game.getFrames().get(9)).getRolls().size()).isEqualTo(3);
+		assertThat(game.getTotalScore()).isEqualTo(33);
+	}
 
 }
