@@ -1,17 +1,21 @@
 package com.jobsity.bowlingscoreboard.application;
 
+import com.jobsity.bowlingscoreboard.domain.model.ScoreTable;
+import com.jobsity.bowlingscoreboard.infrastructure.convert.ScoreTableInputToScoreTable;
 import com.jobsity.bowlingscoreboard.infrastructure.dto.ScoreTableInput;
 
 public class BowlingScoreBoard {
 	
-	private BowlingScoreBoardConfiguration configuration;
+	private BowlingScoreBoardDependencies dependencies;
 
-	public BowlingScoreBoard(BowlingScoreBoardConfiguration configuration) {
-		this.configuration = configuration;
+	public BowlingScoreBoard(BowlingScoreBoardDependencies configuration) {
+		this.dependencies = configuration;
 	}
 
 	public void start() {
-		ScoreTableInput scoreTable = this.configuration.getInput().read();
+		ScoreTableInput scoreTableInput = this.dependencies.getInput().read();
+		ScoreTable scoreTable = ScoreTableInputToScoreTable.convert(scoreTableInput);
+		this.dependencies.calculation().calculate(scoreTable);
 	}
 
 }	

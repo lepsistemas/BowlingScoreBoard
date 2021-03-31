@@ -1,4 +1,4 @@
-package com.jobsity.bowlingscoreboard.infrastructure.dto;
+package com.jobsity.bowlingscoreboard.domain.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,15 +10,15 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode
 @ToString
-public class ScoreTableInput {
+public class ScoreTable {
 	
-	private List<RollInput> rolls;
+	private List<Roll> rolls;
 	
-	public ScoreTableInput() {
+	public ScoreTable() {
 		this.rolls = new ArrayList<>();
 	}
-	
-	public void addRoll(RollInput roll) {
+
+	public void addRoll(Roll roll) {
 		this.rolls.add(roll);
 	}
 
