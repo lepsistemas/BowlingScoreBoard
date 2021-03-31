@@ -5,19 +5,17 @@ import com.jobsity.bowlingscoreboard.application.BowlingScoreBoard;
 
 public class Application {
 	
-	static ApplicationFactory applicationFactory = new ConsoleApplicationFactory();
-    
 	public static void main(String[] args) {
 		try {
 			Application application = new Application();
-			application.run(args);
+			application.run(new ConsoleApplicationFactory(args));
 		} catch (Exception e) {
-            applicationFactory.output().write(e.getMessage());
+			System.out.println(e.getMessage());
         }
 	}
 	
-	void run(String[] args) {
-		BowlingScoreBoard board = applicationFactory.board();
-		board.start(args);
+	void run(ApplicationFactory applicationFactory) {
+		BowlingScoreBoard scoreBoard = applicationFactory.board();
+		scoreBoard.start();
 	}
 }

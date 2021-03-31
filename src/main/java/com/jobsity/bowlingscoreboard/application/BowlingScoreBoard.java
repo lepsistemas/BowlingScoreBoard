@@ -1,5 +1,7 @@
 package com.jobsity.bowlingscoreboard.application;
 
+import com.jobsity.bowlingscoreboard.infrastructure.dto.ScoreTableInput;
+
 public class BowlingScoreBoard {
 	
 	private BowlingScoreBoardConfiguration configuration;
@@ -8,8 +10,8 @@ public class BowlingScoreBoard {
 		this.configuration = configuration;
 	}
 
-	public void start(String[] args) {
-		this.configuration.getOutput().write(args[0]);
+	public void start() {
+		ScoreTableInput scoreTable = this.configuration.getInput().read();
 	}
 
-}
+}	
