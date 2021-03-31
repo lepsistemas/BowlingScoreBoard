@@ -7,16 +7,10 @@ import lombok.ToString;
 @ToString
 public class RollInput {
 	
-	private String player;
 	private String pinsDown;
 	
-	public RollInput(String player, String pinsDown) {
-		this.player = player;
+	public RollInput(String pinsDown) {
 		this.pinsDown = pinsDown;
-	}
-
-	public String getPlayer() {
-		return player;
 	}
 
 	public String getPinsDown() {

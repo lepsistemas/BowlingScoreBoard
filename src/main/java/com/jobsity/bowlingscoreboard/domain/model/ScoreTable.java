@@ -12,9 +12,11 @@ import lombok.ToString;
 @ToString
 public class ScoreTable {
 	
+	private String player;
 	private List<Roll> rolls;
 	
-	public ScoreTable() {
+	public ScoreTable(String player) {
+		this.player = player;
 		this.rolls = new ArrayList<>();
 	}
 

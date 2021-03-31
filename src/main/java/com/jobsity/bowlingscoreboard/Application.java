@@ -1,7 +1,7 @@
 package com.jobsity.bowlingscoreboard;
 
 import com.jobsity.bowlingscoreboard.application.ApplicationFactory;
-import com.jobsity.bowlingscoreboard.application.BowlingScoreBoard;
+import com.jobsity.bowlingscoreboard.application.TenPinBowlingGame;
 
 public class Application {
 	
@@ -15,7 +15,7 @@ public class Application {
 	}
 	
 	void run(ApplicationFactory applicationFactory) {
-		BowlingScoreBoard scoreBoard = applicationFactory.board();
+		TenPinBowlingGame scoreBoard = applicationFactory.board();
 		scoreBoard.start();
 	}
 }

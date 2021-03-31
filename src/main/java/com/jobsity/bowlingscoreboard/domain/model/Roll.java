@@ -9,12 +9,16 @@ import lombok.ToString;
 @ToString
 public class Roll {
 	
-	private String player;
-	private Integer pindsDown;
+	private static final Integer MAX_PINS_DOWN = Integer.valueOf(10);
+	
+	private Integer pinsDown;
 
-	public Roll(String player, Integer pindsDown) {
-		this.player = player;
-		this.pindsDown = pindsDown;
+	public Roll(Integer pinsDown) {
+		this.pinsDown = pinsDown;
+	}
+
+	public boolean isMaxPinsDown() {
+		return MAX_PINS_DOWN.compareTo(this.pinsDown) == 0;
 	}
 
 }

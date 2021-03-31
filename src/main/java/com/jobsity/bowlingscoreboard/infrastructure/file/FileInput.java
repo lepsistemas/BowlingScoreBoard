@@ -3,6 +3,10 @@ package com.jobsity.bowlingscoreboard.infrastructure.file;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
@@ -23,9 +27,10 @@ public class FileInput implements Input {
 	}
 
 	@Override
-	public ScoreTableInput read() {
+	public List<ScoreTableInput> read() {
 		try {
-			ScoreTableInput scoreTable = new ScoreTableInput();
+			Map<String, ScoreTableInput> scoreTables = new LinkedHashMap<>();
+			
 			Stream<String> lines = Files.lines(Paths.get(this.path));
 			lines.forEach(line -> {
 	        	Pattern pattern = Pattern.compile(TAB);
@@ -34,11 +39,18 @@ public class FileInput implements Input {
 	        		int delimitator = matcher.start();
 		        	String player = line.substring(0, delimitator);
 		        	String pinsDown = line.substring(delimitator + 1);
-		        	scoreTable.addRoll(new RollInput(player, pinsDown));
+		        	
+		        	
+					ScoreTableInput scoreTable = scoreTables.get(player);
+					if (scoreTable == null) {
+						scoreTable = new ScoreTableInput(player);
+					}
+		        	scoreTable.addRoll(new RollInput(pinsDown));
+		        	scoreTables.put(player, scoreTable);
 	        	}
 	        });
 			lines.close();
-			return scoreTable;
+			return new ArrayList<>(scoreTables.values());
 		} catch (IOException e) {
 			throw new InvalidInputFileException("Invalid input file: " + e.getMessage() + ".");
 		}

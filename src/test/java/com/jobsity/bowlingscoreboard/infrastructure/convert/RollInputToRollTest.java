@@ -11,20 +11,20 @@ public class RollInputToRollTest {
 	
 	@Test
 	public void shoulConvertFoulRoll() {
-		RollInput input = new RollInput("Player", "F");
+		RollInput input = new RollInput("F");
 		
 		Roll roll = RollInputToRoll.convert(input);
 		
-		assertThat(roll).isEqualTo(new Roll("Player", 0));
+		assertThat(roll).isEqualTo(new Roll(0));
 	}
 	
 	@Test
 	public void shoulConvertNormalRoll() {
-		RollInput input = new RollInput("Player", "9");
+		RollInput input = new RollInput("9");
 		
 		Roll roll = RollInputToRoll.convert(input);
 		
-		assertThat(roll).isEqualTo(new Roll("Player", 9));
+		assertThat(roll).isEqualTo(new Roll(9));
 	}
 
 }

@@ -13,19 +13,19 @@ public class ScoreTableInputToScoreTableTest {
 	
 	@Test
 	public void shouldConvertToScoreTable() {
-		ScoreTableInput input = new ScoreTableInput();
-		input.addRoll(new RollInput("Player", "5"));
-		input.addRoll(new RollInput("Player", "4"));
+		ScoreTableInput input = new ScoreTableInput("Player");
+		input.addRoll(new RollInput("5"));
+		input.addRoll(new RollInput("4"));
 		
 		ScoreTable scoreTable = ScoreTableInputToScoreTable.convert(input);
 		
-		ScoreTable expected = new ScoreTable();
-		expected.addRoll(new Roll("Player", 5));
-		expected.addRoll(new Roll("Player", 4));
+		ScoreTable expected = new ScoreTable("Player");
+		expected.addRoll(new Roll(5));
+		expected.addRoll(new Roll(4));
 		assertThat(scoreTable).isEqualTo(expected);
 		// Order guaranteed
-		assertThat(scoreTable.getRolls().get(0)).isEqualTo(new Roll("Player", 5));
-		assertThat(scoreTable.getRolls().get(1)).isEqualTo(new Roll("Player", 4));
+		assertThat(scoreTable.getRolls().get(0)).isEqualTo(new Roll(5));
+		assertThat(scoreTable.getRolls().get(1)).isEqualTo(new Roll(4));
 	}
 
 }

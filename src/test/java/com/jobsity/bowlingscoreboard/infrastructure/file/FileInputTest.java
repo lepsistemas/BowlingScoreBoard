@@ -3,6 +3,8 @@ package com.jobsity.bowlingscoreboard.infrastructure.file;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import com.jobsity.bowlingscoreboard.application.Input;
@@ -19,18 +21,17 @@ public class FileInputTest {
 		
 		Input input = new FileInput(new String [] { inputFilePath });
 		
-		ScoreTableInput actual = input.read();
+		List<ScoreTableInput> actual = input.read();
 		
-		ScoreTableInput expected = new ScoreTableInput();
-		expected.addRoll(new RollInput("Jeff", "10"));
-		expected.addRoll(new RollInput("John", "3"));
-		expected.addRoll(new RollInput("John", "7"));
+		ScoreTableInput playerOneScoreTable = new ScoreTableInput("Jeff");
+		playerOneScoreTable.addRoll(new RollInput("10"));
 		
-		assertThat(actual).isEqualTo(expected);
-		// Ordre guaranteed
-		assertThat(actual.getRolls().get(0)).isEqualTo(new RollInput("Jeff", "10"));
-		assertThat(actual.getRolls().get(1)).isEqualTo(new RollInput("John", "3"));
-		assertThat(actual.getRolls().get(2)).isEqualTo(new RollInput("John", "7"));
+		ScoreTableInput playerTwoScoreTable = new ScoreTableInput("John");
+		playerTwoScoreTable.addRoll(new RollInput("3"));
+		playerTwoScoreTable.addRoll(new RollInput("7"));
+		
+		assertThat(actual.get(0)).isEqualTo(playerOneScoreTable);
+		assertThat(actual.get(1)).isEqualTo(playerTwoScoreTable);
 	}
 	
 	@Test

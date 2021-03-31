@@ -4,8 +4,8 @@ import com.jobsity.bowlingscoreboard.application.ApplicationFactory;
 import com.jobsity.bowlingscoreboard.application.Input;
 import com.jobsity.bowlingscoreboard.application.Output;
 import com.jobsity.bowlingscoreboard.application.exception.InvalidInputFileException;
-import com.jobsity.bowlingscoreboard.application.usecase.GameScoreCalculationPort;
-import com.jobsity.bowlingscoreboard.application.usecase.adapter.GameScoreCalculationAdapter;
+import com.jobsity.bowlingscoreboard.application.usecase.BowlingGameScoreCalculation;
+import com.jobsity.bowlingscoreboard.application.usecase.TenPinGameScoreCalculation;
 import com.jobsity.bowlingscoreboard.infrastructure.console.ConsoleOutput;
 import com.jobsity.bowlingscoreboard.infrastructure.file.FileInput;
 
@@ -31,8 +31,8 @@ public class ConsoleApplicationFactory implements ApplicationFactory {
 	}
 
 	@Override
-	public GameScoreCalculationPort calculation() {
-		return new GameScoreCalculationAdapter();
+	public BowlingGameScoreCalculation calculation() {
+		return new TenPinGameScoreCalculation();
 	}
 
 }

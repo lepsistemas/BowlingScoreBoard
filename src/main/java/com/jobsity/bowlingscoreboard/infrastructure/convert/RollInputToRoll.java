@@ -14,7 +14,7 @@ public class RollInputToRoll {
 		} else {
 			pinsDown = Integer.valueOf(input.getPinsDown());
 		}
-		return new Roll(input.getPlayer(), pinsDown);
+		return new Roll(pinsDown);
 	}
 
 }

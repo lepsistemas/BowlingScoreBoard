@@ -1,14 +1,14 @@
 package com.jobsity.bowlingscoreboard.application;
 
-import com.jobsity.bowlingscoreboard.application.usecase.GameScoreCalculationPort;
+import com.jobsity.bowlingscoreboard.application.usecase.BowlingGameScoreCalculation;
 
-public class BowlingScoreBoardDependencies {
+public class BowlingGameDependencies {
 
 	private final Output output;
 	private final Input input;
-	private final GameScoreCalculationPort calculation;
+	private final BowlingGameScoreCalculation calculation;
 
-	public BowlingScoreBoardDependencies(Output output, Input input, GameScoreCalculationPort calculation) {
+	public BowlingGameDependencies(Output output, Input input, BowlingGameScoreCalculation calculation) {
 		this.output = output;
 		this.input = input;
 		this.calculation = calculation;
@@ -22,7 +22,7 @@ public class BowlingScoreBoardDependencies {
 		return this.input;
 	}
 	
-	public GameScoreCalculationPort calculation() {
+	public BowlingGameScoreCalculation calculation() {
 		return this.calculation;
 	}
 
