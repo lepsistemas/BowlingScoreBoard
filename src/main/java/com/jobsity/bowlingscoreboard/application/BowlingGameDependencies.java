@@ -1,6 +1,6 @@
 package com.jobsity.bowlingscoreboard.application;
 
-import com.jobsity.bowlingscoreboard.application.usecase.BowlingGameScoreCalculation;
+import com.jobsity.bowlingscoreboard.domain.usecase.BowlingGameScoreCalculation;
 
 public class BowlingGameDependencies {
 

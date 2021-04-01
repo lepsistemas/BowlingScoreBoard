@@ -9,7 +9,7 @@ import lombok.ToString;
 
 @EqualsAndHashCode(exclude = { "currentFrame", "previousFrameWithStrike", "previousFrameWithSpare" })
 @ToString(exclude = { "currentFrame", "previousFrameWithStrike", "previousFrameWithSpare" })
-public class GameBoard {
+public class Game {
 	
 	private String player;
 	private Frame[] frames;
@@ -17,7 +17,7 @@ public class GameBoard {
 	private Frame previousFrameWithStrike;
 	private Frame previousFrameWithSpare;
 	
-	public GameBoard(String player) {
+	public Game(String player) {
 		this.player = player;
 		this.frames = new Frame[10];
 		this.currentFrame = 0;

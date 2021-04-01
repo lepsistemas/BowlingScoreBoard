@@ -1,6 +1,6 @@
-package com.jobsity.bowlingscoreboard.application.usecase;
+package com.jobsity.bowlingscoreboard.domain.usecase;
 
-import com.jobsity.bowlingscoreboard.domain.model.GameBoard;
+import com.jobsity.bowlingscoreboard.domain.model.Game;
 import com.jobsity.bowlingscoreboard.domain.model.ScoreTable;
 
 public class TenPinGameScoreCalculation implements BowlingGameScoreCalculation {
@@ -9,8 +9,8 @@ public class TenPinGameScoreCalculation implements BowlingGameScoreCalculation {
 	}
 
 	@Override
-	public GameBoard calculate(ScoreTable scoreTable) {
-		GameBoard game = new GameBoard(scoreTable.getPlayer());
+	public Game calculate(ScoreTable scoreTable) {
+		Game game = new Game(scoreTable.getPlayer());
 		
 		scoreTable.getRolls().forEach(roll -> {
 			game.roll(roll);

@@ -1,18 +1,15 @@
-package com.jobsity.bowlingscoreboard.application.model;
+package com.jobsity.bowlingscoreboard.domain.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import com.jobsity.bowlingscoreboard.domain.model.GameBoard;
-import com.jobsity.bowlingscoreboard.domain.model.Roll;
-
-public class GameBoardTest {
+public class GameTest {
 	
 	@Test
 	public void shouldCreateZeroedGame() {
-		GameBoard game = new GameBoard("Player");
+		Game game = new Game("Player");
 		
 		for(int i = 0; i < 10; i++) {
 			game.roll(new Roll(0));
@@ -45,7 +42,7 @@ public class GameBoardTest {
 	
 	@Test
 	public void shouldCreateGameWithoutBonus() {
-		GameBoard game = new GameBoard("Player");
+		Game game = new Game("Player");
 		
 		game.roll(new Roll(1));
 		game.roll(new Roll(2));
@@ -94,7 +91,7 @@ public class GameBoardTest {
 	
 	@Test
 	public void shouldCreateGameWithStrike() {
-		GameBoard game = new GameBoard("Player");
+		Game game = new Game("Player");
 		
 		game.roll(new Roll(10));
 		game.roll(new Roll(1));
@@ -140,7 +137,7 @@ public class GameBoardTest {
 	
 	@Test
 	public void shouldCreateGameWithSpare() {
-		GameBoard game = new GameBoard("Player");
+		Game game = new Game("Player");
 		
 		game.roll(new Roll(1));
 		game.roll(new Roll(9));
@@ -189,7 +186,7 @@ public class GameBoardTest {
 	
 	@Test
 	public void shouldCreateGameWithStrikeAndSpare() {
-		GameBoard game = new GameBoard("Player");
+		Game game = new Game("Player");
 		
 		game.roll(new Roll(1));
 		game.roll(new Roll(9));
@@ -237,7 +234,7 @@ public class GameBoardTest {
 	
 	@Test
 	public void shouldCreateGameWithStrikeAtLastFrame() {
-		GameBoard game = new GameBoard("Player");
+		Game game = new Game("Player");
 		
 		game.roll(new Roll(1));
 		game.roll(new Roll(1));
@@ -287,7 +284,7 @@ public class GameBoardTest {
 	
 	@Test
 	public void shouldCreateGameWithSpareAtLastFrame() {
-		GameBoard game = new GameBoard("Player");
+		Game game = new Game("Player");
 		
 		game.roll(new Roll(1));
 		game.roll(new Roll(1));
@@ -338,7 +335,7 @@ public class GameBoardTest {
 	@Test
 	@Disabled
 	public void shouldCreatePerfectGame() {
-		GameBoard game = new GameBoard("Player");
+		Game game = new Game("Player");
 		
 		game.roll(new Roll(10));
 		game.roll(new Roll(10));

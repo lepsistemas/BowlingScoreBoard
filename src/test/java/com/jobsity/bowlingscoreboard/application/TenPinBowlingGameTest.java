@@ -11,9 +11,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.jobsity.bowlingscoreboard.application.usecase.BowlingGameScoreCalculation;
 import com.jobsity.bowlingscoreboard.domain.model.Roll;
 import com.jobsity.bowlingscoreboard.domain.model.ScoreTable;
+import com.jobsity.bowlingscoreboard.domain.usecase.BowlingGameScoreCalculation;
 import com.jobsity.bowlingscoreboard.infrastructure.dto.RollInput;
 import com.jobsity.bowlingscoreboard.infrastructure.dto.ScoreTableInput;
 

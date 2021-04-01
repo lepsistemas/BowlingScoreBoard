@@ -3,7 +3,7 @@ package com.jobsity.bowlingscoreboard.application;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.jobsity.bowlingscoreboard.domain.model.GameBoard;
+import com.jobsity.bowlingscoreboard.domain.model.Game;
 import com.jobsity.bowlingscoreboard.domain.model.ScoreTable;
 import com.jobsity.bowlingscoreboard.infrastructure.convert.ScoreTableInputToScoreTable;
 import com.jobsity.bowlingscoreboard.infrastructure.dto.GameBoardOutput;
@@ -24,7 +24,7 @@ public class TenPinBowlingGame {
 				.map(ScoreTableInputToScoreTable::convert)
 				.collect(Collectors.toList());
 		
-		List<GameBoard> gameBoards = scoreTables.stream()
+		List<Game> gameBoards = scoreTables.stream()
 			.map(scoreTable -> this.dependencies.calculation().calculate(scoreTable))
 			.collect(Collectors.toList());
 		
