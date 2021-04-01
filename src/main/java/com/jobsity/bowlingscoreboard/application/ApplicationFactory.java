@@ -7,9 +7,10 @@ public interface ApplicationFactory {
 	Output output();
 	Input input();
 	BowlingGameScoreCalculation calculation();
+	Formatter formatter();
 	
 	default TenPinBowlingGame board() {
-		BowlingGameDependencies configuration = new BowlingGameDependencies(this.output(), this.input(), this.calculation());
+		BowlingGameDependencies configuration = new BowlingGameDependencies(this.output(), this.input(), this.calculation(), this.formatter());
 		return new TenPinBowlingGame(configuration);
 	}
 

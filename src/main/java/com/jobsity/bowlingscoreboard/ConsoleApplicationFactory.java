@@ -1,6 +1,7 @@
 package com.jobsity.bowlingscoreboard;
 
 import com.jobsity.bowlingscoreboard.application.ApplicationFactory;
+import com.jobsity.bowlingscoreboard.application.Formatter;
 import com.jobsity.bowlingscoreboard.application.Input;
 import com.jobsity.bowlingscoreboard.application.Output;
 import com.jobsity.bowlingscoreboard.application.exception.InvalidInputFileException;
@@ -33,6 +34,11 @@ public class ConsoleApplicationFactory implements ApplicationFactory {
 	@Override
 	public BowlingGameScoreCalculation calculation() {
 		return new TenPinGameScoreCalculation();
+	}
+	
+	@Override
+	public Formatter formatter() {
+		return null;
 	}
 
 }

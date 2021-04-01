@@ -5,9 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.jobsity.bowlingscoreboard.application.model.Game;
-import com.jobsity.bowlingscoreboard.application.usecase.BowlingGameScoreCalculation;
-import com.jobsity.bowlingscoreboard.application.usecase.TenPinGameScoreCalculation;
+import com.jobsity.bowlingscoreboard.domain.model.GameBoard;
 import com.jobsity.bowlingscoreboard.domain.model.Roll;
 import com.jobsity.bowlingscoreboard.domain.model.ScoreTable;
 
@@ -23,9 +21,9 @@ public class TenPinGameScoreCalculationTest {
 	@Test
 	public void shouldCalculateZeroGameScore() {
 		ScoreTable table = zeroScoreTable();
-		Game gameScore = this.calculation.calculate(table);
+		GameBoard gameScore = this.calculation.calculate(table);
 		
-		Game expected = expectedZeroGameScore();
+		GameBoard expected = expectedZeroGameScore();
 		assertThat(gameScore).isEqualTo(expected);
 	}
 	
@@ -127,8 +125,8 @@ public class TenPinGameScoreCalculationTest {
 		return scoreTable;
 	}
 	
-	private Game expectedZeroGameScore() {
-		Game gameScore = new Game("Player");
+	private GameBoard expectedZeroGameScore() {
+		GameBoard gameScore = new GameBoard("Player");
 		for(int i = 0; i < 10; i++) {
 		}
 		return gameScore;

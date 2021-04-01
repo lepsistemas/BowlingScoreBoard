@@ -3,9 +3,10 @@ package com.jobsity.bowlingscoreboard.application;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.jobsity.bowlingscoreboard.application.model.Game;
+import com.jobsity.bowlingscoreboard.domain.model.GameBoard;
 import com.jobsity.bowlingscoreboard.domain.model.ScoreTable;
 import com.jobsity.bowlingscoreboard.infrastructure.convert.ScoreTableInputToScoreTable;
+import com.jobsity.bowlingscoreboard.infrastructure.dto.GameBoardOutput;
 import com.jobsity.bowlingscoreboard.infrastructure.dto.ScoreTableInput;
 
 public class TenPinBowlingGame {
@@ -18,15 +19,20 @@ public class TenPinBowlingGame {
 
 	public void start() {
 		List<ScoreTableInput> scoreTableInputs = this.dependencies.getInput().read();
+		
 		List<ScoreTable> scoreTables = scoreTableInputs.stream()
 				.map(ScoreTableInputToScoreTable::convert)
 				.collect(Collectors.toList());
 		
-		List<Game> game = scoreTables.stream()
+		List<GameBoard> gameBoards = scoreTables.stream()
 			.map(scoreTable -> this.dependencies.calculation().calculate(scoreTable))
 			.collect(Collectors.toList());
 		
-		System.out.println(game);
+		gameBoards.stream()
+			.forEach(gameBoard -> {
+				GameBoardOutput output = this.dependencies.formatter().format(gameBoard);
+				this.dependencies.getOutput().write(output.toString());
+			});
 	}
 
 }	

@@ -1,9 +1,7 @@
-package com.jobsity.bowlingscoreboard.application.model;
+package com.jobsity.bowlingscoreboard.domain.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.jobsity.bowlingscoreboard.domain.model.Roll;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

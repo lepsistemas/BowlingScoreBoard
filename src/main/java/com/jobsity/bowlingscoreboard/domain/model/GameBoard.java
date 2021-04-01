@@ -1,17 +1,15 @@
-package com.jobsity.bowlingscoreboard.application.model;
+package com.jobsity.bowlingscoreboard.domain.model;
 
 import static java.util.Arrays.asList;
 
 import java.util.List;
-
-import com.jobsity.bowlingscoreboard.domain.model.Roll;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @EqualsAndHashCode(exclude = { "currentFrame", "previousFrameWithStrike", "previousFrameWithSpare" })
 @ToString(exclude = { "currentFrame", "previousFrameWithStrike", "previousFrameWithSpare" })
-public class Game {
+public class GameBoard {
 	
 	private String player;
 	private Frame[] frames;
@@ -19,7 +17,7 @@ public class Game {
 	private Frame previousFrameWithStrike;
 	private Frame previousFrameWithSpare;
 	
-	public Game(String player) {
+	public GameBoard(String player) {
 		this.player = player;
 		this.frames = new Frame[10];
 		this.currentFrame = 0;
@@ -38,6 +36,7 @@ public class Game {
 	private void dealWithoutBonus(Roll roll, Frame frame) {
 		frame.addRoll(roll);
 		this.frames[this.currentFrame] = frame;
+		System.out.println(this.currentFrame + ": " + frame);
 	}
 
 	private void dealWithSpare(Frame frame) {

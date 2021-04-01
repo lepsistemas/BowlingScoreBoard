@@ -32,10 +32,13 @@ public class TenPinBowlingGameTest {
 
 	@Mock
 	private BowlingGameScoreCalculation calculation;
+
+	@Mock
+	private Formatter formatter;
 	
 	@BeforeEach
 	public void setUp() {
-		this.dependencies = new BowlingGameDependencies(this.output, this.input, this.calculation);
+		this.dependencies = new BowlingGameDependencies(this.output, this.input, this.calculation, this.formatter);
 		this.board = new TenPinBowlingGame(this.dependencies);
 	}
 	
