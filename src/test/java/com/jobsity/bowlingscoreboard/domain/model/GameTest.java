@@ -354,14 +354,23 @@ public class GameTest {
 		assertThat((game.getFrames().get(0)).getRolls().size()).isEqualTo(1);
 		assertThat((game.getFrames().get(0)).getScore()).isEqualTo(30);
 		assertThat((game.getFrames().get(1)).getRolls().size()).isEqualTo(1);
+		assertThat((game.getFrames().get(1)).getScore()).isEqualTo(30);
 		assertThat((game.getFrames().get(2)).getRolls().size()).isEqualTo(1);
+		assertThat((game.getFrames().get(2)).getScore()).isEqualTo(30);
 		assertThat((game.getFrames().get(3)).getRolls().size()).isEqualTo(1);
+		assertThat((game.getFrames().get(3)).getScore()).isEqualTo(30);
 		assertThat((game.getFrames().get(4)).getRolls().size()).isEqualTo(1);
+		assertThat((game.getFrames().get(4)).getScore()).isEqualTo(30);
 		assertThat((game.getFrames().get(5)).getRolls().size()).isEqualTo(1);
+		assertThat((game.getFrames().get(5)).getScore()).isEqualTo(30);
 		assertThat((game.getFrames().get(6)).getRolls().size()).isEqualTo(1);
+		assertThat((game.getFrames().get(6)).getScore()).isEqualTo(30);
 		assertThat((game.getFrames().get(7)).getRolls().size()).isEqualTo(1);
+		assertThat((game.getFrames().get(7)).getScore()).isEqualTo(30);
 		assertThat((game.getFrames().get(8)).getRolls().size()).isEqualTo(1);
+		assertThat((game.getFrames().get(8)).getScore()).isEqualTo(30);
 		assertThat((game.getFrames().get(9)).getRolls().size()).isEqualTo(3);
+		assertThat((game.getFrames().get(9)).getScore()).isEqualTo(30);
 		assertThat(game.getTotalScore()).isEqualTo(300);
 	}
 

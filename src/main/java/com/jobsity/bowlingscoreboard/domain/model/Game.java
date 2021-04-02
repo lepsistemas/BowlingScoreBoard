@@ -14,65 +14,48 @@ public class Game {
 	private String player;
 	private Frame[] frames;
 	private Integer currentFrame;
-	private Frame previousFrameWithStrike;
-	private Frame previousFrameWithSpare;
 	
 	public Game(String player) {
 		this.player = player;
 		this.frames = new Frame[10];
 		this.currentFrame = 0;
-		this.previousFrameWithStrike = null;
 	}
 
 	public void roll(Roll roll) {
 		if (this.currentFrame < 10) {
 			Frame frame = this.getCurrentFrame();
 			dealWithoutBonus(roll, frame);
-			dealWithStrike(frame);
-			dealWithSpare(frame);
+			dealWithStrike(this.currentFrame);
+			dealWithSpare(this.currentFrame);
+			if (frame.isOver() && !isLastFrame()) {
+				this.currentFrame++;
+			}
 		}
 	}
 
 	private void dealWithoutBonus(Roll roll, Frame frame) {
 		frame.addRoll(roll);
 		this.frames[this.currentFrame] = frame;
-		System.out.println(this.currentFrame + ": " + frame);
 	}
 
-	private void dealWithSpare(Frame frame) {
-		if (this.previousFrameWithSpare != null) {
-			if (!this.isLastFrame()) {
-				addSpareBonus(frame);
+	private void dealWithSpare(int frameIndex) {
+		if (frameIndex > 0) {
+			Frame frame = this.frames[this.currentFrame];
+			Frame previousFrame = this.frames[frameIndex - 1];
+			if (previousFrame.madeSpare()) {
+				previousFrame.addBonus(frame.getFirstRoll().getPinsDown());
 			}
-			if (frame.isOver()) {
-				this.previousFrameWithSpare = null;
-			}
-		}
-		if (frame.madeSpare()) {
-			this.previousFrameWithSpare = frame;
 		}
 	}
 
-	private void dealWithStrike(Frame frame) {
-		if (this.previousFrameWithStrike != null) {
-			if (!this.isLastFrame()) {
-				addStrikeBonus(frame);
-			}
-			if (frame.isOver()) {
-				this.previousFrameWithStrike = null;
+	private void dealWithStrike(int frameIndex) {
+		if (frameIndex > 0) {
+			Frame frame = this.frames[this.currentFrame];
+			Frame previousFrame = this.frames[frameIndex - 1];
+			if (previousFrame.madeStrike()) {
+				previousFrame.addBonus(frame.getRawScore());
 			}
 		}
-		if (frame.madeStrike()) {
-			this.previousFrameWithStrike = frame;
-		}
-	}
-
-	private void addStrikeBonus(Frame frame) {
-		this.previousFrameWithStrike.addBonus(frame.getScore());
-	}
-	
-	private void addSpareBonus(Frame frame) {
-		this.previousFrameWithSpare.addBonus(frame.getFirstRoll().getPinsDown());
 	}
 
 	private Frame getCurrentFrame() {
@@ -82,7 +65,6 @@ public class Game {
 		}
 		if (!isLastFrame() && frame.isOver()) {
 			frame = new Frame();
-			this.currentFrame++;
 		}
 		return frame;
 	}
