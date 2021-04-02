@@ -27,7 +27,7 @@ public class Frame {
 	}
 	
 	public boolean isOver() {
-		return this.madeStrike() || this.madeSpare() || this.rolls.size() == 2;
+		return this.hadStrike() || this.hadSpare() || this.rolls.size() == 2;
 	}
 	
 	public Integer getRawScore() {
@@ -40,11 +40,11 @@ public class Frame {
 		return this.getRawScore() + this.getBonus();
 	}
 
-	public boolean madeStrike() {
+	public boolean hadStrike() {
 		return this.rolls.size() == 1 && MAX_PINS_DOWN.compareTo(this.rolls.get(0).getPinsDown()) == 0;
 	}
 	
-	public boolean madeSpare() {
+	public boolean hadSpare() {
 		return this.rolls.size() == 2 && MAX_PINS_DOWN.compareTo(this.getScore()) == 0;
 	}
 
@@ -54,6 +54,10 @@ public class Frame {
 
 	public Roll getFirstRoll() {
 		return this.rolls.get(0);
+	}
+
+	public Roll getSecondRoll() {
+		return this.rolls.get(1);
 	}
 
 }

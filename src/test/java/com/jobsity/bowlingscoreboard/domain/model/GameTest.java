@@ -2,7 +2,6 @@ package com.jobsity.bowlingscoreboard.domain.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class GameTest {
@@ -333,7 +332,6 @@ public class GameTest {
 	}
 	
 	@Test
-	@Disabled
 	public void shouldCreatePerfectGame() {
 		Game game = new Game("Player");
 		

@@ -42,18 +42,26 @@ public class Game {
 		if (frameIndex > 0) {
 			Frame frame = this.frames[this.currentFrame];
 			Frame previousFrame = this.frames[frameIndex - 1];
-			if (previousFrame.madeSpare()) {
+			if (previousFrame.hadSpare()) {
 				previousFrame.addBonus(frame.getFirstRoll().getPinsDown());
 			}
 		}
 	}
 
 	private void dealWithStrike(int frameIndex) {
+		if (frameIndex > 1) {
+			Frame previousFrame = this.frames[frameIndex - 1];
+			if (previousFrame.hadStrike()) {
+				dealWithStrike(frameIndex - 1);
+			}
+		}
 		if (frameIndex > 0) {
 			Frame frame = this.frames[this.currentFrame];
 			Frame previousFrame = this.frames[frameIndex - 1];
-			if (previousFrame.madeStrike()) {
-				previousFrame.addBonus(frame.getRawScore());
+			if (previousFrame.hadStrike()) {
+				if (!frame.hadStrike() && frame.isOver()) {
+					previousFrame.addBonus(frame.getFirstRoll().getPinsDown() + frame.getSecondRoll().getPinsDown());
+				}
 			}
 		}
 	}
