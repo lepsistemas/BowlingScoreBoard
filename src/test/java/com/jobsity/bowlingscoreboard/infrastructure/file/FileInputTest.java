@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import com.jobsity.bowlingscoreboard.application.Input;
 import com.jobsity.bowlingscoreboard.application.exception.InvalidInputFileException;
+import com.jobsity.bowlingscoreboard.application.io.Input;
 import com.jobsity.bowlingscoreboard.infrastructure.dto.RollInput;
 import com.jobsity.bowlingscoreboard.infrastructure.dto.ScoreTableInput;
 

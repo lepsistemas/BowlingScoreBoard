@@ -1,20 +1,19 @@
 package com.jobsity.bowlingscoreboard;
 
 import com.jobsity.bowlingscoreboard.application.ApplicationFactory;
-import com.jobsity.bowlingscoreboard.application.Formatter;
-import com.jobsity.bowlingscoreboard.application.Input;
-import com.jobsity.bowlingscoreboard.application.Output;
 import com.jobsity.bowlingscoreboard.application.exception.InvalidInputFileException;
+import com.jobsity.bowlingscoreboard.application.io.Input;
+import com.jobsity.bowlingscoreboard.application.io.Output;
 import com.jobsity.bowlingscoreboard.domain.usecase.BowlingGameScoreCalculation;
 import com.jobsity.bowlingscoreboard.domain.usecase.TenPinGameScoreCalculation;
 import com.jobsity.bowlingscoreboard.infrastructure.console.ConsoleOutput;
 import com.jobsity.bowlingscoreboard.infrastructure.file.FileInput;
 
-public class ConsoleApplicationFactory implements ApplicationFactory {
+public class FileInputApplicationFactory implements ApplicationFactory {
 
 	private String[] args;
 
-	public ConsoleApplicationFactory(String[] args) {
+	public FileInputApplicationFactory(String[] args) {
 		this.args = args;
 		if (args == null || args.length == 0) {
 			throw new InvalidInputFileException("Input file cannot be blank.");
@@ -34,11 +33,6 @@ public class ConsoleApplicationFactory implements ApplicationFactory {
 	@Override
 	public BowlingGameScoreCalculation calculation() {
 		return new TenPinGameScoreCalculation();
-	}
-	
-	@Override
-	public Formatter formatter() {
-		return null;
 	}
 
 }

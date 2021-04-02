@@ -1,4 +1,4 @@
-package com.jobsity.bowlingscoreboard.application;
+package com.jobsity.bowlingscoreboard.application.game;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -6,17 +6,17 @@ import java.util.stream.Collectors;
 import com.jobsity.bowlingscoreboard.domain.model.Game;
 import com.jobsity.bowlingscoreboard.domain.model.ScoreTable;
 import com.jobsity.bowlingscoreboard.infrastructure.convert.ScoreTableInputToScoreTable;
-import com.jobsity.bowlingscoreboard.infrastructure.dto.GameBoardOutput;
 import com.jobsity.bowlingscoreboard.infrastructure.dto.ScoreTableInput;
 
-public class TenPinBowlingGame {
+public class TenPinBowlingGame implements BowlingGame {
 	
-	private BowlingGameDependencies dependencies;
+	private TenPinBowlingGameDependencies dependencies;
 
-	public TenPinBowlingGame(BowlingGameDependencies dependencies) {
+	public TenPinBowlingGame(TenPinBowlingGameDependencies dependencies) {
 		this.dependencies = dependencies;
 	}
 
+	@Override
 	public void start() {
 		List<ScoreTableInput> scoreTableInputs = this.dependencies.getInput().read();
 		
@@ -30,8 +30,7 @@ public class TenPinBowlingGame {
 		
 		gameBoards.stream()
 			.forEach(gameBoard -> {
-				GameBoardOutput output = this.dependencies.formatter().format(gameBoard);
-				this.dependencies.getOutput().write(output.toString());
+				this.dependencies.getOutput().write(gameBoard.toString());
 			});
 	}
 

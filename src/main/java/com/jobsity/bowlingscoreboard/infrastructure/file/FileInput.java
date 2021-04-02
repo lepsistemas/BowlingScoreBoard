@@ -11,8 +11,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
-import com.jobsity.bowlingscoreboard.application.Input;
 import com.jobsity.bowlingscoreboard.application.exception.InvalidInputFileException;
+import com.jobsity.bowlingscoreboard.application.io.Input;
 import com.jobsity.bowlingscoreboard.infrastructure.dto.RollInput;
 import com.jobsity.bowlingscoreboard.infrastructure.dto.ScoreTableInput;
 

@@ -6,11 +6,11 @@ import org.junit.jupiter.api.Test;
 
 import com.jobsity.bowlingscoreboard.application.exception.InvalidInputFileException;
 
-public class ConsoleApplicationFactoryTest {
+public class FileInputApplicationFactoryTest {
 	@Test
 	public void shouldThrowExceptionIfVarArgsIsNull() {
 		assertThatThrownBy(() -> {
-			new ConsoleApplicationFactory(null);
+			new FileInputApplicationFactory(null);
 		})
 		.isInstanceOf(InvalidInputFileException.class)
 		.hasMessage("Input file cannot be blank.");
@@ -20,7 +20,7 @@ public class ConsoleApplicationFactoryTest {
 	public void shouldThrowExceptionIfVarArgsIsEmpty() {
 		assertThatThrownBy(() -> {
 			String[] args = new String[] {};
-			new ConsoleApplicationFactory(args);
+			new FileInputApplicationFactory(args);
 		})
 		.isInstanceOf(InvalidInputFileException.class)
 		.hasMessage("Input file cannot be blank.");

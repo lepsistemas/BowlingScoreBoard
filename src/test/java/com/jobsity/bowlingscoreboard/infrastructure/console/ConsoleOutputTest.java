@@ -9,7 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.jobsity.bowlingscoreboard.application.Output;
+import com.jobsity.bowlingscoreboard.application.io.Output;
 
 @ExtendWith(MockitoExtension.class)
 public class ConsoleOutputTest {

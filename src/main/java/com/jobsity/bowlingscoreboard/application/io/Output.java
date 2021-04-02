@@ -1,4 +1,4 @@
-package com.jobsity.bowlingscoreboard.application;
+package com.jobsity.bowlingscoreboard.application.io;
 
 public interface Output {
 	

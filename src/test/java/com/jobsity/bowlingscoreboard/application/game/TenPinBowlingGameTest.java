@@ -1,4 +1,4 @@
-package com.jobsity.bowlingscoreboard.application;
+package com.jobsity.bowlingscoreboard.application.game;
 
 import static java.util.Arrays.asList;
 import static org.mockito.Mockito.verify;
@@ -11,6 +11,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.jobsity.bowlingscoreboard.application.io.Input;
+import com.jobsity.bowlingscoreboard.application.io.Output;
 import com.jobsity.bowlingscoreboard.domain.model.Roll;
 import com.jobsity.bowlingscoreboard.domain.model.ScoreTable;
 import com.jobsity.bowlingscoreboard.domain.usecase.BowlingGameScoreCalculation;
@@ -20,7 +22,7 @@ import com.jobsity.bowlingscoreboard.infrastructure.dto.ScoreTableInput;
 @ExtendWith(MockitoExtension.class)
 public class TenPinBowlingGameTest {
 	
-	private BowlingGameDependencies dependencies;
+	private TenPinBowlingGameDependencies dependencies;
 	
 	private TenPinBowlingGame board;
 
@@ -32,13 +34,10 @@ public class TenPinBowlingGameTest {
 
 	@Mock
 	private BowlingGameScoreCalculation calculation;
-
-	@Mock
-	private Formatter formatter;
 	
 	@BeforeEach
 	public void setUp() {
-		this.dependencies = new BowlingGameDependencies(this.output, this.input, this.calculation, this.formatter);
+		this.dependencies = new TenPinBowlingGameDependencies(this.output, this.input, this.calculation);
 		this.board = new TenPinBowlingGame(this.dependencies);
 	}
 	

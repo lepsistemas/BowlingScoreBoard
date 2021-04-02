@@ -2,7 +2,7 @@ package com.jobsity.bowlingscoreboard.infrastructure.console;
 
 import java.io.PrintStream;
 
-import com.jobsity.bowlingscoreboard.application.Output;
+import com.jobsity.bowlingscoreboard.application.io.Output;
 
 public class ConsoleOutput implements Output {
 	
