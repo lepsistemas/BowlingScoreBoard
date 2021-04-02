@@ -27,7 +27,7 @@ public class Frame {
 	}
 	
 	public boolean isOver() {
-		return this.hadStrike() || this.hadSpare() || this.rolls.size() == 2;
+		return this.hadStrike() || this.rolls.size() == 2;
 	}
 	
 	public Integer getRawScore() {
