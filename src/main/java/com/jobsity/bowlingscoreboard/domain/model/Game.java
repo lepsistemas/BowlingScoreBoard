@@ -7,8 +7,8 @@ import java.util.List;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-@EqualsAndHashCode(exclude = { "currentFrame", "previousFrameWithStrike", "previousFrameWithSpare" })
-@ToString(exclude = { "currentFrame", "previousFrameWithStrike", "previousFrameWithSpare" })
+@EqualsAndHashCode(exclude = { "currentFrame" })
+@ToString(exclude = { "currentFrame" })
 public class Game {
 	
 	private String player;

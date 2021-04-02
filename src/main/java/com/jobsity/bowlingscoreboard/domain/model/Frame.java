@@ -30,10 +30,14 @@ public class Frame {
 		return this.madeStrike() || this.madeSpare() || this.rolls.size() == 2;
 	}
 	
-	public Integer getScore() {
+	public Integer getRawScore() {
 		return this.rolls.stream()
 				.map(Roll::getPinsDown)
-				.reduce(this.bonus, Integer::sum);
+				.reduce(0, Integer::sum);
+	}
+	
+	public Integer getScore() {
+		return this.getRawScore() + this.getBonus();
 	}
 
 	public boolean madeStrike() {
