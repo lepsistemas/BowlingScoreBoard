@@ -1,18 +1,18 @@
-package com.jobsity.bowlingscoreboard.infrastructure.dto;
+package com.jobsity.bowlingscoreboard.infrastructure.console;
 
 import java.util.List;
 
 import com.jobsity.bowlingscoreboard.domain.model.Frame;
 import com.jobsity.bowlingscoreboard.domain.model.Game;
 
-public class PlayerGameBoardOutput {
+public class ConsolePlayerGameBoardOutput {
 	
 	private static final String SPARE = "/";
 	private static final String STRIKE = "X";
 	
 	private Game game;
 	
-	public PlayerGameBoardOutput(Game game) {
+	public ConsolePlayerGameBoardOutput(Game game) {
 		this.game = game;
 	}
 	

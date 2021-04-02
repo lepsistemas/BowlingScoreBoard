@@ -1,4 +1,4 @@
-package com.jobsity.bowlingscoreboard.infrastructure.dto;
+package com.jobsity.bowlingscoreboard.infrastructure.console;
 
 public class ConsoleFramesGameBoardOutput {
 	

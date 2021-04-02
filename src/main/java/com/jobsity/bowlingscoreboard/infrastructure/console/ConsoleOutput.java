@@ -3,9 +3,8 @@ package com.jobsity.bowlingscoreboard.infrastructure.console;
 import java.io.PrintStream;
 
 import com.jobsity.bowlingscoreboard.application.io.Formatter;
-import com.jobsity.bowlingscoreboard.application.io.GameBoardsOutput;
 import com.jobsity.bowlingscoreboard.application.io.Output;
-import com.jobsity.bowlingscoreboard.infrastructure.dto.ConsoleGameBoardsOutput;
+import com.jobsity.bowlingscoreboard.infrastructure.dto.GameBoardsOutput;
 
 public class ConsoleOutput implements Output {
 	

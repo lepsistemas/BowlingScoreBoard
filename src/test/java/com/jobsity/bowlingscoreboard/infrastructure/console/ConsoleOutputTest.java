@@ -11,7 +11,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.jobsity.bowlingscoreboard.application.io.Output;
-import com.jobsity.bowlingscoreboard.infrastructure.dto.ConsoleGameBoardsOutput;
 
 @ExtendWith(MockitoExtension.class)
 public class ConsoleOutputTest {

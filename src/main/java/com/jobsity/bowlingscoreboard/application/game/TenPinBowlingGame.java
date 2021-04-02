@@ -3,10 +3,10 @@ package com.jobsity.bowlingscoreboard.application.game;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.jobsity.bowlingscoreboard.application.io.GameBoardsOutput;
 import com.jobsity.bowlingscoreboard.domain.model.Game;
 import com.jobsity.bowlingscoreboard.domain.model.ScoreTable;
 import com.jobsity.bowlingscoreboard.infrastructure.convert.ScoreTableInputToScoreTable;
+import com.jobsity.bowlingscoreboard.infrastructure.dto.GameBoardsOutput;
 import com.jobsity.bowlingscoreboard.infrastructure.dto.ScoreTableInput;
 
 public class TenPinBowlingGame implements BowlingGame {
