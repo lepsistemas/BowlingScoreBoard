@@ -10,7 +10,6 @@ public class Application {
 			Application application = new Application();
 			application.run(new FileInputApplicationFactory(args));
 		} catch (Exception e) {
-			e.printStackTrace();
 			System.out.println(e.getMessage());
         }
 	}
