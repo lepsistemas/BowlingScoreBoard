@@ -45,7 +45,7 @@ public class Frame {
 	}
 	
 	public boolean hadSpare() {
-		return this.rolls.size() == 2 && MAX_PINS_DOWN.compareTo(this.getScore()) == 0;
+		return this.rolls.size() == 2 && MAX_PINS_DOWN.compareTo(this.getRawScore()) == 0;
 	}
 
 	public void addBonus(Integer bonus) {
@@ -58,6 +58,14 @@ public class Frame {
 
 	public Roll getSecondRoll() {
 		return this.rolls.get(1);
+	}
+
+	public boolean hadNoBonus() {
+		return !this.hadStrike() && !this.hadSpare();
+	}
+
+	public Roll getThirdRoll() {
+		return this.rolls.get(2);
 	}
 
 }

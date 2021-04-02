@@ -25,8 +25,8 @@ public class Game {
 		if (this.currentFrame < 10) {
 			Frame frame = this.getCurrentFrame();
 			dealWithoutBonus(roll, frame);
-			dealWithStrike(this.currentFrame);
-			dealWithSpare(this.currentFrame);
+			dealWithStrike();
+			dealWithSpare();
 			if (frame.isOver() && !isLastFrame()) {
 				this.currentFrame++;
 			}
@@ -38,30 +38,45 @@ public class Game {
 		this.frames[this.currentFrame] = frame;
 	}
 
-	private void dealWithSpare(int frameIndex) {
-		if (frameIndex > 0) {
+	private void dealWithSpare() {
+		if (this.currentFrame > 0) {
 			Frame frame = this.frames[this.currentFrame];
-			Frame previousFrame = this.frames[frameIndex - 1];
+			Frame previousFrame = this.frames[this.currentFrame - 1];
 			if (previousFrame.hadSpare()) {
 				previousFrame.addBonus(frame.getFirstRoll().getPinsDown());
 			}
 		}
 	}
 
-	private void dealWithStrike(int frameIndex) {
-		if (frameIndex > 1) {
-			Frame previousFrame = this.frames[frameIndex - 1];
-			if (previousFrame.hadStrike()) {
-				dealWithStrike(frameIndex - 1);
+	private void dealWithStrike() {
+		if (this.currentFrame > 1) {
+			for(int frameIndex = this.currentFrame; frameIndex > (this.currentFrame - 1); frameIndex--) {
+				dealWithBeforePreviousStrike(frameIndex);
+				dealWithPreviousStrike(frameIndex);
 			}
 		}
-		if (frameIndex > 0) {
-			Frame frame = this.frames[this.currentFrame];
-			Frame previousFrame = this.frames[frameIndex - 1];
+	}
+
+	private void dealWithPreviousStrike(int frameIndex) {
+		Frame frame = this.frames[frameIndex];
+		Frame previousFrame = this.frames[frameIndex - 1];
+		if (previousFrame.hadStrike()) {
+			if (frame.isOver()) {
+				previousFrame.addBonus(frame.getRawScore());
+			}
+		}
+	}
+
+	private void dealWithBeforePreviousStrike(int i) {
+		Frame frame = this.frames[i];
+		Frame previousFrame = this.frames[i - 1];
+		Frame beforePreviousFrame = this.frames[i - 2];
+		
+		if (beforePreviousFrame.hadStrike()) {
 			if (previousFrame.hadStrike()) {
-				if (!frame.hadStrike() && frame.isOver()) {
-					previousFrame.addBonus(frame.getFirstRoll().getPinsDown() + frame.getSecondRoll().getPinsDown());
-				}
+				beforePreviousFrame.addBonus(previousFrame.getRawScore() + frame.getFirstRoll().getPinsDown());
+			} else {
+				beforePreviousFrame.addBonus(previousFrame.getRawScore());
 			}
 		}
 	}

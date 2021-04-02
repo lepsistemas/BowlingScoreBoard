@@ -2,7 +2,10 @@ package com.jobsity.bowlingscoreboard.infrastructure.console;
 
 import java.io.PrintStream;
 
+import com.jobsity.bowlingscoreboard.application.io.Formatter;
+import com.jobsity.bowlingscoreboard.application.io.GameBoardsOutput;
 import com.jobsity.bowlingscoreboard.application.io.Output;
+import com.jobsity.bowlingscoreboard.infrastructure.dto.ConsoleGameBoardsOutput;
 
 public class ConsoleOutput implements Output {
 	
@@ -13,8 +16,13 @@ public class ConsoleOutput implements Output {
 	}
 
 	@Override
-	public void write(String message) {
-		this.printStream.print(message);
+	public void write(GameBoardsOutput output) {
+		this.printStream.println(((ConsoleGameBoardsOutput) output).toString());
+	}
+
+	@Override
+	public Formatter formatter() {
+		return new ConsoleFormatter();
 	}
 
 }

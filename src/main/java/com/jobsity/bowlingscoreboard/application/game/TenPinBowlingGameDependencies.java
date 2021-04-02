@@ -16,11 +16,11 @@ public class TenPinBowlingGameDependencies {
 		this.calculation = calculation;
 	}
 
-	public Output getOutput() {
+	public Output output() {
 		return this.output;
 	}
 
-	public Input getInput() {
+	public Input input() {
 		return this.input;
 	}
 	

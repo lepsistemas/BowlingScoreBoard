@@ -237,6 +237,34 @@ public class GameTest {
 		assertThat((this.game.getFrames().get(9)).getScore()).isEqualTo(30);
 		assertThat(this.game.getTotalScore()).isEqualTo(300);
 	}
+	
+	@Test
+	public void shouldCreateJeffsGame() {
+		roll(new int[] { 10, 7,3, 9,0, 10, 0,8, 8,2, 0,6, 10, 10, 10,8,1  });
+		
+		assertThat(this.game.getPlayer()).isEqualTo("Player");
+		assertThat((this.game.getFrames().get(0)).getRolls().size()).isEqualTo(1);
+		assertThat((this.game.getFrames().get(0)).getScore()).isEqualTo(20);
+		assertThat((this.game.getFrames().get(1)).getRolls().size()).isEqualTo(2);
+		assertThat((this.game.getFrames().get(1)).getScore()).isEqualTo(19);
+		assertThat((this.game.getFrames().get(2)).getRolls().size()).isEqualTo(2);
+		assertThat((this.game.getFrames().get(2)).getScore()).isEqualTo(9);
+		assertThat((this.game.getFrames().get(3)).getRolls().size()).isEqualTo(1);
+		assertThat((this.game.getFrames().get(3)).getScore()).isEqualTo(18);
+		assertThat((this.game.getFrames().get(4)).getRolls().size()).isEqualTo(2);
+		assertThat((this.game.getFrames().get(4)).getScore()).isEqualTo(8);
+		assertThat((this.game.getFrames().get(5)).getRolls().size()).isEqualTo(2);
+		assertThat((this.game.getFrames().get(5)).getScore()).isEqualTo(10);
+		assertThat((this.game.getFrames().get(6)).getRolls().size()).isEqualTo(2);
+		assertThat((this.game.getFrames().get(6)).getScore()).isEqualTo(6);
+		assertThat((this.game.getFrames().get(7)).getRolls().size()).isEqualTo(1);
+		assertThat((this.game.getFrames().get(7)).getScore()).isEqualTo(30);
+		assertThat((this.game.getFrames().get(8)).getRolls().size()).isEqualTo(1);
+		assertThat((this.game.getFrames().get(8)).getScore()).isEqualTo(28);
+		assertThat((this.game.getFrames().get(9)).getRolls().size()).isEqualTo(3);
+		assertThat((this.game.getFrames().get(9)).getScore()).isEqualTo(19);
+		assertThat(this.game.getTotalScore()).isEqualTo(167);
+	}
 
 	private void roll(int[] rolls) {
 		for(int roll: rolls) {

@@ -1,6 +1,7 @@
 package com.jobsity.bowlingscoreboard.infrastructure.console;
 
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.io.PrintStream;
 
@@ -10,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.jobsity.bowlingscoreboard.application.io.Output;
+import com.jobsity.bowlingscoreboard.infrastructure.dto.ConsoleGameBoardsOutput;
 
 @ExtendWith(MockitoExtension.class)
 public class ConsoleOutputTest {
@@ -17,13 +19,18 @@ public class ConsoleOutputTest {
 	@Mock
 	private PrintStream printStream;
 	
+	@Mock
+	private ConsoleGameBoardsOutput board;
+	
 	@Test
 	public void shouldWriteMessageToOutput() {
 		Output output = new ConsoleOutput(this.printStream);
 		
-		output.write("A message");
+		when(this.board.toString()).thenReturn("ConsoleGameBoardsOutput");
 		
-		verify(this.printStream).print("A message");
+		output.write(this.board);
+		
+		verify(this.printStream).println("ConsoleGameBoardsOutput");
 	}
 
 }
