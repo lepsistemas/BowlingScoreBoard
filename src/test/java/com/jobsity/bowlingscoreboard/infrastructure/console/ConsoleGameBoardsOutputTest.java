@@ -21,7 +21,7 @@ public class ConsoleGameBoardsOutputTest {
 
 	@Test
 	public void shouldCreateConsoleGameBoardFromGame() {
-		roll(new int[] { 10, 7,3, 9,0, 10, 0,8, 8,2, 0,6, 10, 10, 10,8,1  });
+		roll(new Integer[] { 10, 7,3, 9,0, 10, 0,8, 8,2, null,6, 10, 10, 10,8,1  });
 		
 		GameBoardsOutput output = new ConsoleGameBoardsOutput(asList(this.game));
 		
@@ -30,15 +30,15 @@ public class ConsoleGameBoardsOutputTest {
 				+ System.getProperty("line.separator")
 				+ "Player"
 				+ System.getProperty("line.separator")
-				+ "Pinfalls		X	7	/	9	0		X	0	8	8	/	0	6		X		X	X	8	1"
+				+ "Pinfalls		X	7	/	9	0		X	0	8	8	/	F	6		X		X	X	8	1"
 				+ System.getProperty("line.separator")
 				+ "Score		20		39		48		66		74		84		90		120		148		167"
 				+ System.getProperty("line.separator")
 				);
 	}
 
-	private void roll(int[] rolls) {
-		for(int roll: rolls) {
+	private void roll(Integer... rolls) {
+		for(Integer roll: rolls) {
 			this.game.roll(new Roll(roll));
 		}
 	}

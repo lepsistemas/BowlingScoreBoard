@@ -18,7 +18,7 @@ import com.jobsity.bowlingscoreboard.infrastructure.dto.ScoreTableInput;
 
 public class FileInput implements Input {
 
-	private static final String TAB = "\\t";
+	private static final String TAB = "	";
 	
 	private String path;
 

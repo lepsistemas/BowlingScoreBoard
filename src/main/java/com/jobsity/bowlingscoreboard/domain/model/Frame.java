@@ -32,7 +32,7 @@ public class Frame {
 	
 	public Integer getRawScore() {
 		return this.rolls.stream()
-				.map(Roll::getPinsDown)
+				.map(roll -> roll.getPinsDown() == null ? 0 : roll.getPinsDown())
 				.reduce(0, Integer::sum);
 	}
 	
@@ -41,6 +41,9 @@ public class Frame {
 	}
 
 	public boolean hadStrike() {
+		if (this.rolls.get(0).getPinsDown() == null) {
+			return false;
+		}
 		return this.rolls.size() == 1 && MAX_PINS_DOWN.compareTo(this.rolls.get(0).getPinsDown()) == 0;
 	}
 	
@@ -66,6 +69,10 @@ public class Frame {
 
 	public Roll getThirdRoll() {
 		return this.rolls.get(2);
+	}
+	
+	public Integer getBonus() {
+		return this.bonus == null ? 0 : this.bonus;
 	}
 
 }

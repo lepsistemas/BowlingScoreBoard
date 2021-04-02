@@ -15,7 +15,7 @@ public class RollInputToRollTest {
 		
 		Roll roll = RollInputToRoll.convert(input);
 		
-		assertThat(roll).isEqualTo(new Roll(0));
+		assertThat(roll).isEqualTo(new Roll(null));
 	}
 	
 	@Test

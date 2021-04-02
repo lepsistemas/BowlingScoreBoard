@@ -29,7 +29,7 @@ public class ConsoleOutputTest {
 		
 		output.write(this.board);
 		
-		verify(this.printStream).println("ConsoleGameBoardsOutput");
+		verify(this.printStream).print("ConsoleGameBoardsOutput");
 	}
 
 }

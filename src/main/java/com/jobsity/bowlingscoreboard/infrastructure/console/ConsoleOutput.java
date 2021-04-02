@@ -16,7 +16,7 @@ public class ConsoleOutput implements Output {
 
 	@Override
 	public void write(GameBoardsOutput output) {
-		this.printStream.println(((ConsoleGameBoardsOutput) output).toString());
+		this.printStream.print(((ConsoleGameBoardsOutput) output).toString());
 	}
 
 	@Override

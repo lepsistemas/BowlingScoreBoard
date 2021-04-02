@@ -8,12 +8,7 @@ public class RollInputToRoll {
 	private static final String FOUL = "F";
 
 	public static Roll convert(RollInput input) {
-		Integer pinsDown;
-		if (FOUL.equals(input.getPinsDown())) {
-			pinsDown = 0;
-		} else {
-			pinsDown = Integer.valueOf(input.getPinsDown());
-		}
+		Integer pinsDown = FOUL.equals(input.getPinsDown()) ? null : Integer.valueOf(input.getPinsDown());
 		return new Roll(pinsDown);
 	}
 

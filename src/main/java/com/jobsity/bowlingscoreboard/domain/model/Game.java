@@ -103,8 +103,7 @@ public class Game {
 	public int getTotalScore() {
 		int gameScore = 0;
 		for(Frame frame : this.frames) {
-			int bonus = 0;
-			gameScore += frame.getScore() + bonus;
+			gameScore += frame.getScore();
 		}
 		return gameScore;
 	}

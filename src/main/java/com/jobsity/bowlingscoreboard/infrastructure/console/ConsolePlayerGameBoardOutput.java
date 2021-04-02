@@ -35,17 +35,22 @@ public class ConsolePlayerGameBoardOutput {
 				if (frame.hadStrike()) {
 					frameLine.append(ConsoleGameBoardsOutput.TAB + STRIKE + ConsoleGameBoardsOutput.TAB);
 				}
+				String firstRollPinsDown = frame.getFirstRoll().getPinsDown() != null ? frame.getFirstRoll().getPinsDown().toString() : "F";
 				if (frame.hadSpare()) {
-					frameLine.append(frame.getFirstRoll().getPinsDown() + ConsoleGameBoardsOutput.TAB + SPARE + ConsoleGameBoardsOutput.TAB);
+					frameLine.append(firstRollPinsDown + ConsoleGameBoardsOutput.TAB + SPARE + ConsoleGameBoardsOutput.TAB);
 				}
 				if (frame.hadNoBonus()) {
-					frameLine.append(frame.getFirstRoll().getPinsDown() + ConsoleGameBoardsOutput.TAB + frame.getSecondRoll().getPinsDown() + ConsoleGameBoardsOutput.TAB);
+					String secondRollPinsDown = frame.getSecondRoll().getPinsDown() != null ? frame.getSecondRoll().getPinsDown().toString() : "F";
+					frameLine.append(firstRollPinsDown + ConsoleGameBoardsOutput.TAB + secondRollPinsDown + ConsoleGameBoardsOutput.TAB);
 				}
 				scoreLine.append(total + ConsoleGameBoardsOutput.TAB + ConsoleGameBoardsOutput.TAB);
 			}
 			if (frameCount == 10) {
 				if (frame.getThirdRoll() != null) {
-					String lastRoll = frame.getFirstRoll().getPinsDown() + ConsoleGameBoardsOutput.TAB + frame.getSecondRoll().getPinsDown() + ConsoleGameBoardsOutput.TAB + frame.getThirdRoll().getPinsDown();
+					String firstRollPinsDown = frame.getFirstRoll().getPinsDown() != null ? frame.getFirstRoll().getPinsDown().toString() : "F";
+					String secondRollPinsDown = frame.getSecondRoll().getPinsDown() != null ? frame.getSecondRoll().getPinsDown().toString() : "F";
+					String thirdRollPinsDown = frame.getThirdRoll().getPinsDown() != null ? frame.getThirdRoll().getPinsDown().toString() : "F";
+					String lastRoll = firstRollPinsDown + ConsoleGameBoardsOutput.TAB + secondRollPinsDown + ConsoleGameBoardsOutput.TAB + thirdRollPinsDown;
 					frameLine.append(lastRoll.replace("10", STRIKE));
 				}
 				scoreLine.append(total);

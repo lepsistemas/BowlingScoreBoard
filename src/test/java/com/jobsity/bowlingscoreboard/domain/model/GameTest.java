@@ -16,7 +16,7 @@ public class GameTest {
 
 	@Test
 	public void shouldCreateZeroedGame() {
-		roll(new int[] { 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0 });
+		roll(new Integer[] { 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0 });
 		
 		assertThat(this.game.getPlayer()).isEqualTo("Player");
 		assertThat(this.game.getFrames().get(0).getRolls().size()).isEqualTo(2);
@@ -44,7 +44,7 @@ public class GameTest {
 	
 	@Test
 	public void shouldCreateGameWithoutBonus() {
-		roll(new int[] { 1,2, 3,4, 1,2, 3,4, 1,2, 3,4, 1,2, 3,4, 1,2, 3,4 });
+		roll(new Integer[] { 1,2, 3,4, 1,2, 3,4, 1,2, 3,4, 1,2, 3,4, 1,2, 3,4 });
 		
 		assertThat(this.game.getPlayer()).isEqualTo("Player");
 		assertThat((this.game.getFrames().get(0)).getRolls().size()).isEqualTo(2);
@@ -72,7 +72,7 @@ public class GameTest {
 	
 	@Test
 	public void shouldCreateGameWithStrike() {
-		roll(new int[] { 10, 1,2, 3,4, 10, 1,2, 3,4, 10, 1,2, 3,4, 1,1 });
+		roll(new Integer[] { 10, 1,2, 3,4, 10, 1,2, 3,4, 10, 1,2, 3,4, 1,1 });
 		
 		assertThat(this.game.getPlayer()).isEqualTo("Player");
 		assertThat((this.game.getFrames().get(0)).getRolls().size()).isEqualTo(1);
@@ -100,7 +100,7 @@ public class GameTest {
 	
 	@Test
 	public void shouldCreateGameWithSpare() {
-		roll(new int[] { 1,9, 3,4, 1,2, 3,7, 1,2, 3,4, 1,2, 3,4, 1,2, 3,4 });
+		roll(new Integer[] { 1,9, 3,4, 1,2, 3,7, 1,2, 3,4, 1,2, 3,4, 1,2, 3,4 });
 		
 		assertThat(this.game.getPlayer()).isEqualTo("Player");
 		assertThat((this.game.getFrames().get(0)).getRolls().size()).isEqualTo(2);
@@ -128,7 +128,7 @@ public class GameTest {
 	
 	@Test
 	public void shouldCreateGameWithStrikeAndSpare() {
-		roll(new int[] { 1,9, 3,4, 10, 3,7, 10, 3,4, 1,2, 3,4, 1,2, 3,4 });
+		roll(new Integer[] { 1,9, 3,4, 10, 3,7, 10, 3,4, 1,2, 3,4, 1,2, 3,4 });
 		
 		assertThat(this.game.getPlayer()).isEqualTo("Player");
 		assertThat((this.game.getFrames().get(0)).getRolls().size()).isEqualTo(2);
@@ -156,7 +156,7 @@ public class GameTest {
 	
 	@Test
 	public void shouldCreateGameWithStrikeAtLastFrame() {
-		roll(new int[] { 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 10,9,1 });
+		roll(new Integer[] { 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 10,9,1 });
 		
 		assertThat(this.game.getPlayer()).isEqualTo("Player");
 		assertThat((this.game.getFrames().get(0)).getRolls().size()).isEqualTo(2);
@@ -184,7 +184,7 @@ public class GameTest {
 	
 	@Test
 	public void shouldCreateGameWithSpareAtLastFrame() {
-		roll(new int[] { 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 2,8,5 });
+		roll(new Integer[] { 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 2,8,5 });
 		
 		assertThat(this.game.getPlayer()).isEqualTo("Player");
 		assertThat((this.game.getFrames().get(0)).getRolls().size()).isEqualTo(2);
@@ -212,7 +212,7 @@ public class GameTest {
 	
 	@Test
 	public void shouldCreatePerfectGame() {
-		roll(new int[] { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 });
+		roll(new Integer[] { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 });
 		
 		assertThat(this.game.getPlayer()).isEqualTo("Player");
 		assertThat((this.game.getFrames().get(0)).getRolls().size()).isEqualTo(1);
@@ -239,8 +239,8 @@ public class GameTest {
 	}
 	
 	@Test
-	public void shouldCreateJeffsGame() {
-		roll(new int[] { 10, 7,3, 9,0, 10, 0,8, 8,2, 0,6, 10, 10, 10,8,1  });
+	public void shouldCreateGameWithFoul() {
+		roll(new Integer[] { 10, 7,3, 9,0, 10, 0,8, 8,2, null,6, 10, 10, 10,8,1  });
 		
 		assertThat(this.game.getPlayer()).isEqualTo("Player");
 		assertThat((this.game.getFrames().get(0)).getRolls().size()).isEqualTo(1);
@@ -266,8 +266,8 @@ public class GameTest {
 		assertThat(this.game.getTotalScore()).isEqualTo(167);
 	}
 
-	private void roll(int[] rolls) {
-		for(int roll: rolls) {
+	private void roll(Integer... rolls) {
+		for(Integer roll: rolls) {
 			this.game.roll(new Roll(roll));
 		}
 	}
