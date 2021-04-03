@@ -4,6 +4,8 @@ import com.jobsity.bowlingscoreboard.domain.model.ScoreTable;
 import com.jobsity.bowlingscoreboard.infrastructure.dto.ScoreTableInput;
 
 public class ScoreTableInputToScoreTable {
+	
+	private ScoreTableInputToScoreTable() {}
 
 	public static ScoreTable convert(ScoreTableInput input) {
 		ScoreTable scoreTable = new ScoreTable(input.getPlayer());

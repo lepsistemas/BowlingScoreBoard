@@ -1,5 +1,6 @@
 package com.jobsity.bowlingscoreboard.infrastructure.console;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -23,13 +24,13 @@ public class ConsoleOutputTest {
 	
 	@Test
 	public void shouldWriteMessageToOutput() {
-		Output output = new ConsoleOutput(this.printStream);
-		
 		when(this.board.toString()).thenReturn("ConsoleGameBoardsOutput");
 		
+		Output output = new ConsoleOutput(this.printStream);
 		output.write(this.board);
 		
 		verify(this.printStream).print("ConsoleGameBoardsOutput");
+		assertThat(output.formatter()).isExactlyInstanceOf(ConsoleFormatter.class);
 	}
 
 }
