@@ -41,10 +41,19 @@ If you only want to build a jar file, use the command:
 
 This will generate the artifact in: **build/libs/BowlingScoreBoard-0.0.1-SNAPSHOT.jar**
 
-## Tests
+## Unit tests
 
 If you only want to run the tests, use the command:
 
 ```shell
 ./gradlew test
+```
+This will generate a report located in **build/reports/jacoco/test/html/index.html** where you can find the coverage of the project.
+
+## Acceptance tests
+
+If you want to run the acceptance tests, use the command:
+
+```shell
+./gradlew acceptanceTest
 ```
