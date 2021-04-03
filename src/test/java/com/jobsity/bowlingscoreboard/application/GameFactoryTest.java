@@ -9,11 +9,11 @@ import com.jobsity.bowlingscoreboard.application.io.Input;
 import com.jobsity.bowlingscoreboard.application.io.Output;
 import com.jobsity.bowlingscoreboard.domain.usecase.BowlingGameScoreCalculation;
 
-public class ApplicationFactoryTest {
+public class GameFactoryTest {
 	
 	@Test
 	public void shouldCreateDefaultBoard() {
-		ApplicationFactory factory = new ApplicationFactory() {
+		GameFactory factory = new GameFactory() {
 			
 			@Override
 			public Output output() {

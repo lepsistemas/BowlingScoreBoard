@@ -1,0 +1,21 @@
+[
+	{
+		"player": "Jeff",
+		"rolls": [
+			{
+				"pinsDown": "10"
+			}
+		]
+	},
+	{
+		"player": "John",
+		"rolls": [
+			{
+				"pinsDown": "3"
+			},
+			{
+				"pinsDown": "7"
+			}
+		]
+	}
+]

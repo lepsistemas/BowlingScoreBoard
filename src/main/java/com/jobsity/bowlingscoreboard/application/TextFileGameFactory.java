@@ -1,19 +1,18 @@
-package com.jobsity.bowlingscoreboard;
+package com.jobsity.bowlingscoreboard.application;
 
-import com.jobsity.bowlingscoreboard.application.ApplicationFactory;
 import com.jobsity.bowlingscoreboard.application.exception.InvalidInputFileException;
 import com.jobsity.bowlingscoreboard.application.io.Input;
 import com.jobsity.bowlingscoreboard.application.io.Output;
 import com.jobsity.bowlingscoreboard.domain.usecase.BowlingGameScoreCalculation;
 import com.jobsity.bowlingscoreboard.domain.usecase.TenPinGameScoreCalculation;
-import com.jobsity.bowlingscoreboard.infrastructure.file.FileInput;
+import com.jobsity.bowlingscoreboard.infrastructure.file.TextInput;
 
-public class FileInputApplicationFactory implements ApplicationFactory {
+public class TextFileGameFactory implements GameFactory {
 
 	private String[] args;
 	private Output output;
 
-	public FileInputApplicationFactory(String[] args, Output output) {
+	public TextFileGameFactory(String[] args, Output output) {
 		this.args = args;
 		this.output = output;
 		if (args == null || args.length == 0) {
@@ -28,7 +27,7 @@ public class FileInputApplicationFactory implements ApplicationFactory {
 	
 	@Override
 	public Input input() {
-		return new FileInput(args);
+		return new TextInput(args);
 	}
 
 	@Override

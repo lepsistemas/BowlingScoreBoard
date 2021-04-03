@@ -16,13 +16,13 @@ import com.jobsity.bowlingscoreboard.application.io.Input;
 import com.jobsity.bowlingscoreboard.infrastructure.dto.RollInput;
 import com.jobsity.bowlingscoreboard.infrastructure.dto.ScoreTableInput;
 
-public class FileInput implements Input {
+public class TextInput implements Input {
 
 	private static final String TAB = "	";
 	
 	private String path;
 
-	public FileInput(String[] args) {
+	public TextInput(String[] args) {
 		this.path = args[0];
 	}
 
@@ -52,7 +52,7 @@ public class FileInput implements Input {
 			lines.close();
 			return new ArrayList<>(scoreTables.values());
 		} catch (IOException e) {
-			throw new InvalidInputFileException("Invalid input file: " + e.getMessage() + ".");
+			throw new InvalidInputFileException("Invalid input file: " + this.path + ".");
 		}
 	}
 

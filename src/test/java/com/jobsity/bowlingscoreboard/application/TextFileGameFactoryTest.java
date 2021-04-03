@@ -1,4 +1,4 @@
-package com.jobsity.bowlingscoreboard;
+package com.jobsity.bowlingscoreboard.application;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -8,11 +8,12 @@ import org.junit.jupiter.api.Test;
 import com.jobsity.bowlingscoreboard.application.exception.InvalidInputFileException;
 import com.jobsity.bowlingscoreboard.infrastructure.console.ConsoleOutput;
 
-public class FileInputApplicationFactoryTest {
+public class TextFileGameFactoryTest {
+	
 	@Test
 	public void shouldThrowExceptionIfVarArgsIsNull() {
 		assertThatThrownBy(() -> {
-			new FileInputApplicationFactory(null, null);
+			new TextFileGameFactory(null, null);
 		})
 		.isInstanceOf(InvalidInputFileException.class)
 		.hasMessage("Input file cannot be blank.");
@@ -22,7 +23,7 @@ public class FileInputApplicationFactoryTest {
 	public void shouldThrowExceptionIfVarArgsIsEmpty() {
 		assertThatThrownBy(() -> {
 			String[] args = new String[] {};
-			new FileInputApplicationFactory(args, null);
+			new TextFileGameFactory(args, null);
 		})
 		.isInstanceOf(InvalidInputFileException.class)
 		.hasMessage("Input file cannot be blank.");
@@ -30,7 +31,7 @@ public class FileInputApplicationFactoryTest {
 	
 	@Test
 	public void shouldCreateApplication() {
-		FileInputApplicationFactory factory = new FileInputApplicationFactory(new String[] { "path/to/file" }, new ConsoleOutput(System.out));
+		TextFileGameFactory factory = new TextFileGameFactory(new String[] { "path/to/file" }, new ConsoleOutput(System.out));
 		
 		assertThat(factory.output()).isNotNull();
 		assertThat(factory.input()).isNotNull();

@@ -12,14 +12,14 @@ import com.jobsity.bowlingscoreboard.application.io.Input;
 import com.jobsity.bowlingscoreboard.infrastructure.dto.RollInput;
 import com.jobsity.bowlingscoreboard.infrastructure.dto.ScoreTableInput;
 
-public class FileInputTest {
+public class JsonInputTest {
 	
 	@Test
 	public void shouldConvertInputFileToScoreTableInput() {
 		ClassLoader classLoader = getClass().getClassLoader();
-		String inputFilePath = classLoader.getResource("fake-game-input.txt").getPath();
+		String inputFilePath = classLoader.getResource("fake-game-input.json").getPath();
 		
-		Input input = new FileInput(new String [] { inputFilePath });
+		Input input = new JsonInput(new String [] { inputFilePath });
 		
 		List<ScoreTableInput> actual = input.read();
 		
@@ -36,13 +36,13 @@ public class FileInputTest {
 	
 	@Test
 	public void shouldThrowExceptionForInvalidInputFile() {
-		Input input = new FileInput(new String [] { "invalid-input.txt" });
+		Input input = new JsonInput(new String [] { "invalid-input.json" });
 		
 		assertThatThrownBy(() -> {
 			input.read();
 		})
 		.isInstanceOf(InvalidInputFileException.class)
-		.hasMessage("Invalid input file: invalid-input.txt.");
+		.hasMessage("Invalid input file: invalid-input.json.");
 	}
 
 }

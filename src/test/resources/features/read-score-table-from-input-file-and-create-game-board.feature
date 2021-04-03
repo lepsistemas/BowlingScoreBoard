@@ -1,6 +1,6 @@
 Feature: Application should read Score Table from input files and create a Game Board
 
-  Scenario: Should print a Game Board from a Score Table
+  Scenario: Should print a Game Board from a Score Table in text file
     Given An existing Score Table in path "<path>"
     When I run the game
     Then I should see the Game Board "<result>"
@@ -10,3 +10,4 @@ Feature: Application should read Score Table from input files and create a Game 
     | sample-game-input.txt  | sample-game-output.txt    |
     | zero-game-input.txt    | zero-game-output.txt      |
     | perfect-game-input.txt | perfect-game-output.txt   |
+    | sample-game-input.json | sample-game-output.txt    |
