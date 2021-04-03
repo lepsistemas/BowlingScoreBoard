@@ -57,3 +57,30 @@ If you want to run the acceptance tests, use the command:
 ```shell
 ./gradlew acceptanceTest
 ```
+
+This will run Cucumber acceptance tests for:
+
+1. Sample game
+2. Zero game
+3. Perfect game
+
+## Bonus
+
+In order to prove the use of the good principles of SOLID, mainly Dependency Inversion, Open-Closed and Liskov Substitution, I've extended the program to accept a json file as well. Some steps to do so:
+
+1. Created a new class that implements [Input](https://github.com/lepsistemas/BowlingScoreBoard/blob/master/src/main/java/com/jobsity/bowlingscoreboard/application/io/Input.java). in this case [JsonInput](https://github.com/lepsistemas/BowlingScoreBoard/blob/master/src/main/java/com/jobsity/bowlingscoreboard/infrastructure/file/JsonInput.java) was the concrete class.
+2. Created a new class that implements [ApplicationFactory](https://github.com/lepsistemas/BowlingScoreBoard/blob/master/src/main/java/com/jobsity/bowlingscoreboard/application/ApplicationFactory.java) in order to inject the specifics dependencies for Json handling, like the JsonInput just created, as seen in [JsonFileGameFactory](https://github.com/lepsistemas/BowlingScoreBoard/blob/master/src/main/java/com/jobsity/bowlingscoreboard/application/JsonFileGameFactory.java).
+3. To run the application either reading a .txt or a .json file, you could swap between TextFileGameFactory and JsonFileGameFactory in the [Main class](https://github.com/lepsistemas/BowlingScoreBoard/blob/master/src/main/java/com/jobsity/bowlingscoreboard/Application.java).
+4. Since having to recompile the application to run with different file extension doesn't make sense, I've created a [InputFileApplicationFactory](https://github.com/lepsistemas/BowlingScoreBoard/blob/master/src/main/java/com/jobsity/bowlingscoreboard/application/InputFileApplicationFactory.java) that will inject one of both factories depending on the file extension passed as parameter in the command line.
+
+After this change, you can run the application with .txt extension:
+
+```shell
+./gradlew run --args="path/to/text/file.txt"
+```
+
+Or with .json format:
+
+```shell
+./gradlew run --args="path/to/text/file.json"
+```
