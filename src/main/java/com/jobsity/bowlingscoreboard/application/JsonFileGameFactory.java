@@ -7,7 +7,7 @@ import com.jobsity.bowlingscoreboard.domain.usecase.BowlingGameScoreCalculation;
 import com.jobsity.bowlingscoreboard.domain.usecase.TenPinGameScoreCalculation;
 import com.jobsity.bowlingscoreboard.infrastructure.file.JsonInput;
 
-public class JsonFileGameFactory implements GameFactory {
+public class JsonFileGameFactory implements ApplicationFactory {
 
 	private String[] args;
 	private Output output;

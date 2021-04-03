@@ -9,8 +9,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 
-import com.jobsity.bowlingscoreboard.application.GameFactory;
-import com.jobsity.bowlingscoreboard.application.GameRunnerFactory;
+import com.jobsity.bowlingscoreboard.application.ApplicationFactory;
+import com.jobsity.bowlingscoreboard.application.InputFileApplicationFactory;
 import com.jobsity.bowlingscoreboard.application.game.BowlingGame;
 import com.jobsity.bowlingscoreboard.infrastructure.console.ConsoleOutput;
 
@@ -20,7 +20,7 @@ import io.cucumber.java.en.When;
 
 public class ReadScoreTableFromInputFileAndCreateGameBoardFeature {
 	
-	private GameFactory factory;
+	private ApplicationFactory factory;
 	
 	private PrintStream output;
 	
@@ -30,7 +30,7 @@ public class ReadScoreTableFromInputFileAndCreateGameBoardFeature {
 		String inputFilePath = classLoader.getResource(path).getPath();
 		
 		this.output = mock(PrintStream.class);
-		this.factory = new GameRunnerFactory(new String[] { inputFilePath }, new ConsoleOutput(this.output)).factory();
+		this.factory = new InputFileApplicationFactory(new String[] { inputFilePath }, new ConsoleOutput(this.output)).create();
 	}
 
 	@When("I run the game")

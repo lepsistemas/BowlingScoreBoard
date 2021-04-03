@@ -4,25 +4,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 
-public class GameRunnerFactoryTest {
+public class InputFileApplicationFactoryTest {
 	
 	@Test
 	public void shouldCreateTextGameRunnerForNullArgs() {
-		GameFactory gameFactory = new GameRunnerFactory(new String[] { "path/to/file" }, null).factory();
+		ApplicationFactory gameFactory = new InputFileApplicationFactory(new String[] { "path/to/file" }, null).create();
 		
 		assertThat(gameFactory).isExactlyInstanceOf(TextFileGameFactory.class);
 	}
 	
 	@Test
 	public void shouldCreateTextGameRunner() {
-		GameFactory gameFactory = new GameRunnerFactory(new String[] { "path/to/file.txt" }, null).factory();
+		ApplicationFactory gameFactory = new InputFileApplicationFactory(new String[] { "path/to/file.txt" }, null).create();
 		
 		assertThat(gameFactory).isExactlyInstanceOf(TextFileGameFactory.class);
 	}
 	
 	@Test
 	public void shouldCreateJsonGameRunner() {
-		GameFactory gameFactory = new GameRunnerFactory(new String[] { "path/to/file.json" }, null).factory();
+		ApplicationFactory gameFactory = new InputFileApplicationFactory(new String[] { "path/to/file.json" }, null).create();
 		
 		assertThat(gameFactory).isExactlyInstanceOf(JsonFileGameFactory.class);
 	}

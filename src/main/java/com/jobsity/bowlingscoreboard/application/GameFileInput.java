@@ -1,24 +1,23 @@
 package com.jobsity.bowlingscoreboard.application;
 
-public enum GameRunner {
+public enum GameFileInput {
 	
 	TEXT_INPUT("txt"),
 	JSON_INPUT("json");
 
 	private String extension;
 
-	GameRunner(String extension) {
+	GameFileInput(String extension) {
 		this.extension = extension;
 	}
 	
-	public static GameRunner of(String source) {
-		GameRunner defaultRunner = TEXT_INPUT;
-		for (GameRunner value : values()) {
+	public static GameFileInput of(String source) {
+		for (GameFileInput value : values()) {
 			if (value.extension.equals(source)) {
 				return value;
 			}
 		}
-		return defaultRunner;
+		return TEXT_INPUT;
 	}
 
 }

@@ -7,7 +7,7 @@ import com.jobsity.bowlingscoreboard.application.io.Input;
 import com.jobsity.bowlingscoreboard.application.io.Output;
 import com.jobsity.bowlingscoreboard.domain.usecase.BowlingGameScoreCalculation;
 
-public interface GameFactory {
+public interface ApplicationFactory {
 	
 	Output output();
 	Input input();
