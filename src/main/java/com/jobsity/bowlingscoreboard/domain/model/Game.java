@@ -11,18 +11,21 @@ import lombok.ToString;
 @ToString(exclude = { "currentFrame" })
 public class Game {
 	
+	private static final int MAX_FRAMES_IN_GAME = 10;
+	private static final int INITIAL_CURRENT_FRAME = 0;
+	
 	private String player;
 	private Frame[] frames;
 	private Integer currentFrame;
 	
 	public Game(String player) {
 		this.player = player;
-		this.frames = new Frame[10];
-		this.currentFrame = 0;
+		this.frames = new Frame[MAX_FRAMES_IN_GAME];
+		this.currentFrame = INITIAL_CURRENT_FRAME;
 	}
 
 	public void roll(Roll roll) {
-		if (this.currentFrame < 10) {
+		if (this.currentFrame < MAX_FRAMES_IN_GAME) {
 			Frame frame = this.getCurrentFrame();
 			dealWithoutBonus(roll, frame);
 			dealWithStrike();
@@ -93,7 +96,7 @@ public class Game {
 	}
 
 	private boolean isLastFrame() {
-		return (this.currentFrame + 1) == 10;
+		return (this.currentFrame + 1) == MAX_FRAMES_IN_GAME;
 	}
 	
 	public String getPlayer() {

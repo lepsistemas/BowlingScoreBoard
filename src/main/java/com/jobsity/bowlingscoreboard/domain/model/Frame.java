@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.ToString;
 
-@Getter
 @EqualsAndHashCode
 @ToString
 public class Frame {
@@ -48,6 +46,9 @@ public class Frame {
 	}
 	
 	public boolean hadSpare() {
+		if (this.rolls.get(0).getPinsDown() == null) {
+			return false;
+		}
 		return this.rolls.size() == 2 && MAX_PINS_DOWN.compareTo(this.getRawScore()) == 0;
 	}
 
@@ -73,6 +74,10 @@ public class Frame {
 	
 	public Integer getBonus() {
 		return this.bonus == null ? 0 : this.bonus;
+	}
+	
+	public List<Roll> getRolls() {
+		return this.rolls;
 	}
 
 }

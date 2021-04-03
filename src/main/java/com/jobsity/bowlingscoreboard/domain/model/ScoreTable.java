@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.ToString;
 
-@Getter
 @EqualsAndHashCode
 @ToString
 public class ScoreTable {
@@ -22,6 +20,14 @@ public class ScoreTable {
 
 	public void addRoll(Roll roll) {
 		this.rolls.add(roll);
+	}
+	
+	public String getPlayer() {
+		return this.player;
+	}
+	
+	public List<Roll> getRolls() {
+		return this.rolls;
 	}
 
 }

@@ -1,10 +1,8 @@
 package com.jobsity.bowlingscoreboard.domain.model;
 
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.ToString;
 
-@Getter
 @EqualsAndHashCode
 @ToString
 public class Roll {
@@ -13,6 +11,10 @@ public class Roll {
 
 	public Roll(Integer pinsDown) {
 		this.pinsDown = pinsDown;
+	}
+	
+	public Integer getPinsDown() {
+		return this.pinsDown;
 	}
 
 }
