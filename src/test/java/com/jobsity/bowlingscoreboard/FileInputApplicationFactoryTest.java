@@ -6,12 +6,13 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.Test;
 
 import com.jobsity.bowlingscoreboard.application.exception.InvalidInputFileException;
+import com.jobsity.bowlingscoreboard.infrastructure.console.ConsoleOutput;
 
 public class FileInputApplicationFactoryTest {
 	@Test
 	public void shouldThrowExceptionIfVarArgsIsNull() {
 		assertThatThrownBy(() -> {
-			new FileInputApplicationFactory(null);
+			new FileInputApplicationFactory(null, null);
 		})
 		.isInstanceOf(InvalidInputFileException.class)
 		.hasMessage("Input file cannot be blank.");
@@ -21,7 +22,7 @@ public class FileInputApplicationFactoryTest {
 	public void shouldThrowExceptionIfVarArgsIsEmpty() {
 		assertThatThrownBy(() -> {
 			String[] args = new String[] {};
-			new FileInputApplicationFactory(args);
+			new FileInputApplicationFactory(args, null);
 		})
 		.isInstanceOf(InvalidInputFileException.class)
 		.hasMessage("Input file cannot be blank.");
@@ -29,7 +30,7 @@ public class FileInputApplicationFactoryTest {
 	
 	@Test
 	public void shouldCreateApplication() {
-		FileInputApplicationFactory factory = new FileInputApplicationFactory(new String[] { "path/to/file" });
+		FileInputApplicationFactory factory = new FileInputApplicationFactory(new String[] { "path/to/file" }, new ConsoleOutput(System.out));
 		
 		assertThat(factory.output()).isNotNull();
 		assertThat(factory.input()).isNotNull();

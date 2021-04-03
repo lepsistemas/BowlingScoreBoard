@@ -31,7 +31,7 @@ public class ApplicationFactoryTest {
 			}
 		};
 		
-		assertThat(factory.board()).isExactlyInstanceOf(TenPinBowlingGame.class);
+		assertThat(factory.game()).isExactlyInstanceOf(TenPinBowlingGame.class);
 	}
 
 }

@@ -82,6 +82,7 @@ public class FrameTest {
 		frame.addRoll(new Roll(2));
 		frame.addRoll(new Roll(3));
 		
+		assertTrue(frame.hasThirdRoll());
 		assertThat(frame.getThirdRoll()).isEqualTo(new Roll(3));
 	}
 	

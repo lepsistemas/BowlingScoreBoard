@@ -13,7 +13,7 @@ public interface ApplicationFactory {
 	Input input();
 	BowlingGameScoreCalculation calculation();
 	
-	default BowlingGame board() {
+	default BowlingGame game() {
 		TenPinBowlingGameDependencies dependencies = new TenPinBowlingGameDependencies(this.output(), this.input(), this.calculation());
 		return new TenPinBowlingGame(dependencies);
 	}

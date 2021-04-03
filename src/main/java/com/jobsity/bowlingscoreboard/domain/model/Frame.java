@@ -67,6 +67,10 @@ public class Frame {
 	public boolean hadNoBonus() {
 		return !this.hadStrike() && !this.hadSpare();
 	}
+	
+	public boolean hasThirdRoll() {
+		return this.rolls.size() == 3;
+	}
 
 	public Roll getThirdRoll() {
 		return this.rolls.get(2);

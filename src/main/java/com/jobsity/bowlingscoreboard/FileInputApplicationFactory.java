@@ -6,15 +6,16 @@ import com.jobsity.bowlingscoreboard.application.io.Input;
 import com.jobsity.bowlingscoreboard.application.io.Output;
 import com.jobsity.bowlingscoreboard.domain.usecase.BowlingGameScoreCalculation;
 import com.jobsity.bowlingscoreboard.domain.usecase.TenPinGameScoreCalculation;
-import com.jobsity.bowlingscoreboard.infrastructure.console.ConsoleOutput;
 import com.jobsity.bowlingscoreboard.infrastructure.file.FileInput;
 
 public class FileInputApplicationFactory implements ApplicationFactory {
 
 	private String[] args;
+	private Output output;
 
-	public FileInputApplicationFactory(String[] args) {
+	public FileInputApplicationFactory(String[] args, Output output) {
 		this.args = args;
+		this.output = output;
 		if (args == null || args.length == 0) {
 			throw new InvalidInputFileException("Input file cannot be blank.");
 		}
@@ -22,7 +23,7 @@ public class FileInputApplicationFactory implements ApplicationFactory {
 
 	@Override
 	public Output output() {
-		return new ConsoleOutput(System.out);
+		return this.output;
 	}
 	
 	@Override
