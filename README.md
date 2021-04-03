@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/lepsistemas/BowlingScoreBoard.svg?branch=master)](https://travis-ci.com/lepsistemas/BowlingScoreBoard) [![codecov](https://codecov.io/gh/lepsistemas/BowlingScoreBoard/branch/master/graph/badge.svg?token=3XTLLVS7E6)](https://codecov.io/gh/lepsistemas/BowlingScoreBoard)
+
 # Bowling Score Board
 Bowling Score Board exercise that reads a Score Table from a parametrized text file and prints the Board Game into console.
 
