@@ -8,7 +8,7 @@ Bowling Score Board exercise that reads a Score Table from a parametrized text f
 ## Run
 
 ```shell
-./gradlew run --args="/path/to/file"
+gradlew run --args="/path/to/file"
 ```
 
 The application will show an error message if the file does not exist for given path or if you try to run it without a path at all. For example:
@@ -36,7 +36,7 @@ Score           16              25              44              53              
 If you only want to build a jar file, use the command:
 
 ```shell
-./gradlew build
+gradlew build
 ```
 
 This will generate the artifact in: **build/libs/BowlingScoreBoard-0.0.1-SNAPSHOT.jar**
@@ -46,7 +46,7 @@ This will generate the artifact in: **build/libs/BowlingScoreBoard-0.0.1-SNAPSHO
 If you only want to run the tests, use the command:
 
 ```shell
-./gradlew test
+gradlew test
 ```
 This will generate a report located in **build/reports/jacoco/test/html/index.html** where you can find the coverage of the project.
 
@@ -55,7 +55,7 @@ This will generate a report located in **build/reports/jacoco/test/html/index.ht
 If you want to run the acceptance tests, use the command:
 
 ```shell
-./gradlew acceptanceTest
+gradlew acceptanceTest
 ```
 
 This will run Cucumber acceptance tests for:
@@ -76,11 +76,11 @@ In order to prove the use of the good principles of SOLID, mainly Dependency Inv
 After this change, you can run the application with .txt extension:
 
 ```shell
-./gradlew run --args="path/to/text/file.txt"
+gradlew run --args="path/to/text/file.txt"
 ```
 
 Or with .json format:
 
 ```shell
-./gradlew run --args="path/to/text/file.json"
+gradlew run --args="path/to/text/file.json"
 ```
