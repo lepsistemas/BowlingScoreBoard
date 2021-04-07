@@ -3,7 +3,7 @@
 # Bowling Score Board
 Bowling Score Board exercise that reads a Score Table from a parametrized text file and prints the Board Game into console.
 
-**In order to run the following tasks for this application, you will need Java 8 or greater installed.**
+**In order to run the following tasks for this application, you will need Gradle 6 or greater and Java 8 or greater installed. I recommend you to use the Gradle wrapper available in this project. For that, replace the following 'gradle' with './gradlew' instead.**
 
 ## Run
 
@@ -82,5 +82,5 @@ gradlew run --args="path/to/text/file.txt"
 Or with .json format:
 
 ```shell
-gradlew run --args="path/to/text/file.json"
+gradlew run --args="path/to/json/file.json"
 ```
